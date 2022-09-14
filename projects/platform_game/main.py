@@ -1,24 +1,20 @@
 import pygame
 from sys import exit
 from settings import *
+from level_editor import *
+from state_management import *
 
 # Set up
 pygame.init()
-
-
+state = State_manager(GAME_STATE)
 
 
 while(1): 
-    # Displays background
-    draw_bg()
-    for event in pygame.event.get(): 
-        if event.type == pygame.QUIT: 
-            pygame.quit()
-            exit()
+    state.main_menu()
+    if user_clicks_on_space: 
+        change the GAME_STATE = state.game_start()
+            
 
-
-    get_map_info(level_map)
-    
     
     pygame.display.update()
     clock.tick(60)

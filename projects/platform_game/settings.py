@@ -1,8 +1,15 @@
 import pygame
 
 level_map = [
-    []
+    [1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1],
+
 ]
+
 
 # Sizes
 TILE_SIZE = 64
@@ -13,12 +20,25 @@ HEIGHT = 700
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Platformer") #temp name, change this
 clock = pygame.time.Clock()
+GAME_STATE = "main_menu"
 
-def get_map_info(map): 
+def tile_setup(map): 
+    """ Loops through map and returns a new map with tiles.
+        :param map: list - level map
+        :return new_map: list of objects - tiles 
+    """
+    new_map = []
     for row_index, rows in enumerate(map): 
-        for col_index, cells in enumerate(rows): 
-            print(col_index, row_index)
-            print(rows, cells)
+        for col_index, cell in enumerate(rows): 
+            print(f"(coordinate: {col_index}, {row_index})") #temp code delete later
+            print(f"Row: {rows}\nCell: {cell}") 
+    
+            if cell == 1: # Grass tile
+                # tile = Tile(), new_map.append(tile), tile.draw(img_surf), 
+                pass
+            if cell == 2: # Dirt tile
+                pass
+    return new_map
             
 # Draw background
 def draw_bg(): 
