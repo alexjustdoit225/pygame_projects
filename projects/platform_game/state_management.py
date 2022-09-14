@@ -6,11 +6,6 @@ from level_editor import *
 class StateManager: 
     def __init__(self):
         self.state = "intro"
-        # Background scroll off/on
-        self.scroll_left = False
-        self.scroll_right = False
-        self.scroll = 0
-        self.scroll_speed = 1
         
         
     def intro(self):
@@ -22,24 +17,31 @@ class StateManager:
             
             # Scrolling background
             if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT: 
-                self.scroll_left = True
-                print(self.scroll_left)
+                settings.scroll_left = True
+                print(settings.scroll_left)
             if event.type == pygame.KEYUP and event.key == pygame.K_LEFT:
-                self.scroll_left = False
-                print(self.scroll_left)
+                settings.scroll_left = False
+                print(settings.scroll_left)
             if event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
-                self.scroll_right = True 
-                print(self.scroll_right)
+                settings.scroll_right = True 
+                print(settings.scroll_right)
             if event.type == pygame.KEYUP and event.key == pygame.K_RIGHT:
-                self.scroll_right = False
-                print(self.scroll_right)
+                settings.scroll_right = False
+                print(settings.scroll_right)
                 
             # Switch game state
             if event.type == pygame.MOUSEBUTTONDOWN: 
                 self.state = "main_game"
+                settings.scroll = 0
+                
+            # Move background
+            if settings.scroll_left == True: 
+                settings.scroll += 5
+            if settings.scroll_right == True: 
+                settings.scroll -= 5
             
         # Displays background
-        draw_bg()
+        draw_bg(settings.scroll)
         pygame.draw.line(screen, "red", (0,0), (600, 600)) #temp code
         
         pygame.display.update()
@@ -53,26 +55,26 @@ class StateManager:
                 
             # Scrolling background
             if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT: 
-                self.scroll_left = True
-                print(self.scroll_left)
+                settings.scroll_left = True
+                print(settings.scroll_left)
             if event.type == pygame.KEYUP and event.key == pygame.K_LEFT:
-                self.scroll_left = False
-                print(self.scroll_left)
+                settings.scroll_left = False
+                print(settings.scroll_left)
             if event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
-                self.scroll_right = True 
-                print(self.scroll_right)
+                settings.scroll_right = True 
+                print(settings.scroll_right)
             if event.type == pygame.KEYUP and event.key == pygame.K_RIGHT:
-                self.scroll_right = False
-                print(self.scroll_right)
+                settings.scroll_right = False
+                print(settings.scroll_right)
                 
         # Move background
-        if self.scroll_left == True: 
-            self.scroll -= 5
-        if self.scroll_right == True: 
-            self.scroll += 5
+        if settings.scroll_left == True: 
+            settings.scroll += 5
+        if settings.scroll_right == True: 
+            settings.scroll -= 5
 
             
-        draw_bg()
+        draw_bg(settings.scroll)
         pygame.draw.line(screen, "blue", (0,0), (600, 600)) #temp code
         
         pygame.display.update()
