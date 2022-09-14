@@ -41,6 +41,7 @@ def draw_bg(scroll_var):
     
     width = bg_surf1.get_width()
     
+    # Creates frames of image surfaces and positions them, parallax effect
     for x in range(6): 
         screen.blit(bg_surf1, ((width * x) - scroll_var * 0.3,0))
         screen.blit(bg_surf2, ((width * x) - scroll_var * 0.4,0))
