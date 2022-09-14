@@ -59,6 +59,10 @@ class StateManager:
                 if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT: 
                     settings.scroll_speed = 5
                 
+                # Switch to intro
+                if event.key == pygame.K_ESCAPE: 
+                    self.state = "intro"
+                    settings.scroll = 0
                 
         # Move background
         if settings.scroll_left == True and settings.scroll > 0: 
@@ -78,8 +82,35 @@ class StateManager:
             if event.type == pygame.QUIT: 
                 pygame.quit()
                 exit()
+        
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT: 
+                    settings.scroll_left = False
+                if event.key == pygame.K_RIGHT: 
+                    settings.scroll_right = False
+                if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT: 
+                    settings.scroll_speed = 1
                 
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    settings.scroll_left = True
+                if event.key == pygame.K_RIGHT:
+                    settings.scroll_right = True 
+                if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT: 
+                    settings.scroll_speed = 5
                 
+                # Switch to intro
+                if event.key == pygame.K_i: 
+                    self.state = "intro"
+                    settings.scroll = 0
+                
+        # Move background
+        if settings.scroll_left == True and settings.scroll > 0: 
+            settings.scroll -= 5 * settings.scroll_speed
+        if settings.scroll_right == True and settings.scroll < (MAX_COLS * TILE_SIZE) - WIDTH: 
+            settings.scroll += 5 * settings.scroll_speed
+        
+               
                 
         # Displays background
         screen.fill("Grey")

@@ -14,7 +14,7 @@ class LevelEditor:
     def draw_grid(self, max_cols, max_rows, tile_sz, color):
         # Draw vertical lines
         for c in range(1, max_cols + 1):
-            pygame.draw.line(settings.screen, color, (c * tile_sz, 0), (c * tile_sz, self.height - self.margin_bottom))
+            pygame.draw.line(settings.screen, color, ((c * tile_sz) - settings.scroll, 0), ((c * tile_sz) - settings.scroll, self.height - self.margin_bottom))
         # Draw horizontal lines
         for r in range(1, max_rows + 1):
             pygame.draw.line(settings.screen, color, (0, r * tile_sz), (self.width - self.margin_right, r * tile_sz))
