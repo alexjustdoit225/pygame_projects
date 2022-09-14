@@ -28,7 +28,7 @@ scroll_speed = 1
 
 
 # Draw background
-def draw_bg(scroll_var): 
+def draw_bg(scroll_var, is_infinte=False): 
     # Load images
     bg_surf1 = pygame.image.load("projects\\platform_game\\graphics\\bg\\sky_solid_color.png").convert_alpha()
     bg_surf1 = pygame.transform.scale(bg_surf1, (WIDTH, HEIGHT))
@@ -47,7 +47,13 @@ def draw_bg(scroll_var):
         screen.blit(bg_surf2, ((width * x) - scroll_var * 0.4,0))
         screen.blit(bg_surf3, ((width * x) - scroll_var * 0.5,HEIGHT - (HEIGHT//2)))
         screen.blit(bg_surf4, ((width * x) -scroll_var * 0.6,HEIGHT - (HEIGHT//3)))
-        
+        continue
+    
+    # if is_infinte == True: 
+    #     screen.blit(bg_surf1, ((width * x) - scroll_var * 0.3,0))
+    #     screen.blit(bg_surf2, ((width * x) - scroll_var * 0.4,0))
+    #     screen.blit(bg_surf3, ((width * x) - scroll_var * 0.5,HEIGHT - (HEIGHT//2)))
+    #     screen.blit(bg_surf4, ((width * x) -scroll_var * 0.6,HEIGHT - (HEIGHT//3)))
         
 
 def tile_setup(map): 

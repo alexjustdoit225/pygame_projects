@@ -7,7 +7,6 @@ class StateManager:
     def __init__(self):
         self.state = "intro"
         
-        
     def intro(self):
         # Event loop
         for event in pygame.event.get(): 
@@ -24,13 +23,12 @@ class StateManager:
                 
     
         # Move background
-        # settings.scroll -= 5
-        # settings.scroll += 5
+        settings.scroll += 5
         
     
         # Displays background
         screen.fill("Grey")
-        draw_bg(settings.scroll)
+        draw_bg(settings.scroll, is_infinte=True)
         pygame.draw.line(screen, "red", (0,0), (600, 600)) #temp code
         
         pygame.display.update()
