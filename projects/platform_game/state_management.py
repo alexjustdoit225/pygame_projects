@@ -6,6 +6,11 @@ from level_editor import *
 class StateManager: 
     def __init__(self):
         self.state = "intro"
+        # Background scroll off/on
+        self.scroll_left = False
+        self.scroll_right = False
+        self.scroll = 0
+        self.scroll_speed = 1
         
         
     def intro(self):
@@ -14,10 +19,22 @@ class StateManager:
             if event.type == pygame.QUIT: 
                 pygame.quit()
                 exit()
-            if event.type == pygame.KEYDOWN and event.key == pygame.key.get_pressed(pygame.KEY_LEFT): 
-                scroll_left = True
-            if event.type == pygame.KEYDOWN and event.key == pygame.key.get_pressed(pygame.KEY_RIGHT):
-                scroll_right = True 
+            
+            # Scrolling background
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT: 
+                self.scroll_left = True
+                print(self.scroll_left)
+            if event.type == pygame.KEYUP and event.key == pygame.K_LEFT:
+                self.scroll_left = False
+                print(self.scroll_left)
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+                self.scroll_right = True 
+                print(self.scroll_right)
+            if event.type == pygame.KEYUP and event.key == pygame.K_RIGHT:
+                self.scroll_right = False
+                print(self.scroll_right)
+                
+            # Switch game state
             if event.type == pygame.MOUSEBUTTONDOWN: 
                 self.state = "main_game"
             
@@ -33,10 +50,27 @@ class StateManager:
             if event.type == pygame.QUIT: 
                 pygame.quit()
                 exit()
-            if event.type == pygame.KEYDOWN and event.key == pygame.key.get_pressed(pygame.KEY_LEFT): 
-                scroll_left = True
-            if event.type == pygame.KEYDOWN and event.key == pygame.key.get_pressed(pygame.KEY_RIGHT):
-                scroll_right = True 
+                
+            # Scrolling background
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT: 
+                self.scroll_left = True
+                print(self.scroll_left)
+            if event.type == pygame.KEYUP and event.key == pygame.K_LEFT:
+                self.scroll_left = False
+                print(self.scroll_left)
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+                self.scroll_right = True 
+                print(self.scroll_right)
+            if event.type == pygame.KEYUP and event.key == pygame.K_RIGHT:
+                self.scroll_right = False
+                print(self.scroll_right)
+                
+        # Move background
+        if self.scroll_left == True: 
+            self.scroll -= 5
+        if self.scroll_right == True: 
+            self.scroll += 5
+
             
         draw_bg()
         pygame.draw.line(screen, "blue", (0,0), (600, 600)) #temp code

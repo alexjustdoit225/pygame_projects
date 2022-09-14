@@ -20,11 +20,6 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Platformer") #temp name, change this
 clock = pygame.time.Clock()
 
-# Background scroll
-scroll_left = False
-scroll_right = False
-scroll = 0
-scroll_speed = 1
 
 
 def tile_setup(map): 
@@ -62,3 +57,5 @@ def draw_bg():
     screen.blit(bg_surf3, (0,HEIGHT - (HEIGHT//2)))
     screen.blit(bg_surf4, (0,HEIGHT - (HEIGHT//3)))
             
+
+    

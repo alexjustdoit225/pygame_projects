@@ -6,14 +6,16 @@ from state_management import *
 
 # Set up
 pygame.init()
-state = StateManager()
+game_state = StateManager()
+
+
 
 
 while(1): 
     
     
     
-    state.run_state_manager()
+    game_state.run_state_manager()
     clock.tick(60)
             
 
