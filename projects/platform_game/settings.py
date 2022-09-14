@@ -1,4 +1,5 @@
 import pygame
+import level_editor 
 
 level_map = [
     [1, 1, 1, 1, 1, 1],
