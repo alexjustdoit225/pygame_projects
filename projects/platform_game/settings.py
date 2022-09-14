@@ -7,14 +7,17 @@ level_map = [
     [1, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1],
 
 ]
 
 # Sizes
-TILE_SIZE = 64
 WIDTH = 1200
 HEIGHT = 700
+MAX_ROWS = 16
+MAX_COLS = 150
+TILE_SIZE = HEIGHT // MAX_ROWS
 
 # Setup
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -29,7 +32,7 @@ scroll_speed = 1
 
 
 # Draw background
-def draw_bg(scroll_var, is_infinte=False): 
+def draw_bg(scroll_var): 
     # Load images
     bg_surf1 = pygame.image.load("projects\\platform_game\\graphics\\bg\\sky_solid_color.png").convert_alpha()
     bg_surf1 = pygame.transform.scale(bg_surf1, (WIDTH, HEIGHT))
@@ -49,31 +52,25 @@ def draw_bg(scroll_var, is_infinte=False):
         screen.blit(bg_surf3, ((width * x) - scroll_var * 0.5,HEIGHT - (HEIGHT//2)))
         screen.blit(bg_surf4, ((width * x) -scroll_var * 0.6,HEIGHT - (HEIGHT//3)))
         continue
-    
-    # if is_infinte == True: 
-    #     screen.blit(bg_surf1, ((width * x) - scroll_var * 0.3,0))
-    #     screen.blit(bg_surf2, ((width * x) - scroll_var * 0.4,0))
-    #     screen.blit(bg_surf3, ((width * x) - scroll_var * 0.5,HEIGHT - (HEIGHT//2)))
-    #     screen.blit(bg_surf4, ((width * x) -scroll_var * 0.6,HEIGHT - (HEIGHT//3)))
         
 
-def tile_setup(map): 
-    """ Loops through map and returns a new map with tiles.
-        :param map: list - level map
-        :return new_map: list of objects - tiles 
-    """
-    new_map = []
-    for row_index, rows in enumerate(map): 
-        for col_index, cell in enumerate(rows): 
-            print(f"(coordinate: {col_index}, {row_index})") #temp code delete later
-            print(f"Row: {rows}\nCell: {cell}") 
+# def tile_setup(map): 
+#     """ Loops through map and returns a new map with tiles.
+#         :param map: list - level map
+#         :return new_map: list of objects - tiles 
+#     """
+#     new_map = []
+#     for row_index, rows in enumerate(map): 
+#         for col_index, cell in enumerate(rows): 
+#             print(f"(coordinate: {col_index}, {row_index})") #temp code delete later
+#             print(f"Row: {rows}\nCell: {cell}") 
     
-            if cell == 1: # Grass tile
-                # tile = Tile(), new_map.append(tile), tile.draw(img_surf), 
-                pass
-            if cell == 2: # Dirt tile
-                pass
-    return new_map
+#             if cell == 1: # Grass tile
+#                 # tile = Tile(), new_map.append(tile), tile.draw(img_surf), 
+#                 pass
+#             if cell == 2: # Dirt tile
+#                 pass
+#     return new_map
             
 
             
