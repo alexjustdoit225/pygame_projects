@@ -10,7 +10,6 @@ level_map = [
 
 ]
 
-
 # Sizes
 TILE_SIZE = 64
 WIDTH = 1200
@@ -20,7 +19,13 @@ HEIGHT = 700
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Platformer") #temp name, change this
 clock = pygame.time.Clock()
-GAME_STATE = "main_menu"
+
+# Background scroll
+scroll_left = False
+scroll_right = False
+scroll = 0
+scroll_speed = 1
+
 
 def tile_setup(map): 
     """ Loops through map and returns a new map with tiles.

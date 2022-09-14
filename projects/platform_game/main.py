@@ -6,17 +6,14 @@ from state_management import *
 
 # Set up
 pygame.init()
-state = State_manager(GAME_STATE)
+state = StateManager()
 
 
 while(1): 
-    state.main_menu()
-    if user_clicks_on_space: 
-        change the GAME_STATE = state.game_start()
-            
-
     
-    pygame.display.update()
+    
+    
+    state.run_state_manager()
     clock.tick(60)
             
 
