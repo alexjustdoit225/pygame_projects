@@ -1,5 +1,5 @@
 import pygame
-import level_editor 
+from level_editor import *
 
 level_map = [
     [1, 1, 1, 1, 1, 1],
@@ -23,6 +23,7 @@ TILE_SIZE = HEIGHT // MAX_ROWS
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Platformer") #temp name, change this
 clock = pygame.time.Clock()
+editor = LevelEditor(WIDTH, HEIGHT)
 
 # Background scroll off/on
 scroll_left = False

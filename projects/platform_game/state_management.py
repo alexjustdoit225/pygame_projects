@@ -7,19 +7,24 @@ class StateManager:
     def __init__(self):
         self.state = "intro"
         
+        
     def intro(self):
         # Event loop
         for event in pygame.event.get(): 
             if event.type == pygame.QUIT: 
                 pygame.quit()
                 exit()
-            
+
+            if event.type == pygame.KEYDOWN: 
+                # Switch to level editor
+                if event.key == pygame.K_e: 
+                    self.state = "edit_level"
+                    settings.scroll = 0
                 
-             # Switch game state
+             # Switch to main game
             if event.type == pygame.MOUSEBUTTONDOWN: 
                 self.state = "main_game"
                 settings.scroll = 0
-                
                 
     
         # Move background
@@ -30,7 +35,6 @@ class StateManager:
         screen.fill("Grey")
         draw_bg(settings.scroll)
         pygame.draw.line(screen, "red", (0,0), (600, 600)) #temp code
-        
         pygame.display.update()
 
     def main_game(self):
@@ -68,9 +72,27 @@ class StateManager:
         
         pygame.display.update()
         
+    def edit_level(self): 
+        # Event loop
+        for event in pygame.event.get(): 
+            if event.type == pygame.QUIT: 
+                pygame.quit()
+                exit()
+                
+                
+                
+        # Displays background
+        screen.fill("Grey")
+        draw_bg(settings.scroll)
+        pygame.draw.line(screen, "green", (0,0), (600, 600)) #temp code
+        editor.draw_grid(MAX_COLS, MAX_ROWS, TILE_SIZE, "white")
+        pygame.display.update()
+        
     def run_state_manager(self): 
         if self.state == "intro":
             self.intro()
         if self.state == "main_game": 
             self.main_game()
+        if self.state == "edit_level": 
+            self.edit_level()
     

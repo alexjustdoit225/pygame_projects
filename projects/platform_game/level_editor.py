@@ -2,11 +2,21 @@ import pygame, settings, tiles
 from settings import *
 
 class LevelEditor: 
-    def __init__(self):
-        pass
+    def __init__(self, screen_width, screen_height):
+        self.width = screen_width
+        self.height = screen_height
+        self.margin_right = 300
+        self.margin_bottom = 100
+        # add edited levels to a dict or list
+        self.levels = ""
     
-    
-    # def draw_grid(self, max_columns, max_rows):
-    #     for c in range(max_rows + 1):
-    #         pygame.draw.line(settings.screen, "red", (col_index,row_index), (col_index, row_index + settings.HEIGHT)) #temp code
+    # Draws editing grid
+    def draw_grid(self, max_cols, max_rows, tile_sz, color):
+        # Draw vertical lines
+        for c in range(1, max_cols + 1):
+            pygame.draw.line(settings.screen, color, (c * tile_sz, 0), (c * tile_sz, self.height - self.margin_bottom))
+        # Draw horizontal lines
+        for r in range(1, max_rows + 1):
+            pygame.draw.line(settings.screen, color, (0, r * tile_sz), (self.width - self.margin_right, r * tile_sz))
                 
+    

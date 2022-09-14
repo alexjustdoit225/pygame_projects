@@ -8,7 +8,6 @@ from level_editor import *
 # Set up
 pygame.init()
 game_state = StateManager()
-editor = LevelEditor()
 
 
 
@@ -16,9 +15,8 @@ editor = LevelEditor()
 while(1): 
     
     
-    # editor.draw_grid(MAX_COLS, MAX_ROWS)
     game_state.run_state_manager()
-    
+    editor.draw_grid(MAX_COLS, MAX_ROWS, TILE_SIZE, "white")
     clock.tick(60)
             
 
