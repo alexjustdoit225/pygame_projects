@@ -39,26 +39,28 @@ class StateManager:
             if event.type == pygame.QUIT: 
                 pygame.quit()
                 exit()
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT: 
+                    settings.scroll_left = False
+                if event.key == pygame.K_RIGHT: 
+                    settings.scroll_right = False
+                if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT: 
+                    settings.scroll_speed = 1
                 
-            # Scrolling background
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT: 
-                settings.scroll_left = True
-                print(settings.scroll_left) # temp code
-            if event.type == pygame.KEYUP and event.key == pygame.K_LEFT:
-                settings.scroll_left = False
-                print(settings.scroll_left) # temp code
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
-                settings.scroll_right = True 
-                print(settings.scroll_right) # temp code
-            if event.type == pygame.KEYUP and event.key == pygame.K_RIGHT:
-                settings.scroll_right = False
-                print(settings.scroll_right) # temp code
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    settings.scroll_left = True
+                if event.key == pygame.K_RIGHT:
+                    settings.scroll_right = True 
+                if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT: 
+                    settings.scroll_speed = 5
+                
                 
         # Move background
         if settings.scroll_left == True and settings.scroll > 0: 
-            settings.scroll -= 5
+            settings.scroll -= 5 * settings.scroll_speed
         if settings.scroll_right == True: 
-            settings.scroll += 5
+            settings.scroll += 5 * settings.scroll_speed
 
         screen.fill("Grey")
         draw_bg(settings.scroll)
