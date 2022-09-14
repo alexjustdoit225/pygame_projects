@@ -39,10 +39,15 @@ def draw_bg(scroll_var):
     bg_surf4 = pygame.image.load("projects\\platform_game\graphics\\bg\\mountain_depth_z_2.png").convert_alpha()
     bg_surf4 = pygame.transform.scale(bg_surf4, (WIDTH, HEIGHT//3))
     
-    screen.blit(bg_surf1, (scroll_var,0))
-    screen.blit(bg_surf2, (scroll_var,0))
-    screen.blit(bg_surf3, (scroll_var,HEIGHT - (HEIGHT//2)))
-    screen.blit(bg_surf4, (scroll_var,HEIGHT - (HEIGHT//3)))
+    width = bg_surf1.get_width()
+    
+    for x in range(6): 
+        screen.blit(bg_surf1, ((width * x) - scroll_var * 0.3,0))
+        screen.blit(bg_surf2, ((width * x) - scroll_var * 0.4,0))
+        screen.blit(bg_surf3, ((width * x) - scroll_var * 0.5,HEIGHT - (HEIGHT//2)))
+        screen.blit(bg_surf4, ((width * x) -scroll_var * 0.6,HEIGHT - (HEIGHT//3)))
+        
+        
 
 def tile_setup(map): 
     """ Loops through map and returns a new map with tiles.
