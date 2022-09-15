@@ -112,26 +112,34 @@ class StateManager:
             settings.scroll += 5 * settings.scroll_speed
         
         # add Btn conditions, if clicked then what
-        for i in range(len(settings.btn_imgs)):
+        for i in range(editor.tile_types):
             create_btn = Buttons((WIDTH - 300) + (75 * settings.btn_col) + 50, (75 * settings.btn_row) + 50, settings.btn_imgs[i])
             all_btns.append(create_btn)
             settings.btn_col += 1
-            if settings.btn_col == len(settings.btn_imgs): 
+            if settings.btn_col == 3: 
                 settings.btn_row += 1
                 settings.btn_col = 0
         
         if dirt.clicked: 
             print("click")
           
-                
+        
                 
         # Displays background
         screen.fill("Grey")
         draw_bg(settings.scroll)
         pygame.draw.line(screen, "green", (0,0), (600, 600)) #temp code
+        # Draws grid
         editor.draw_grid(MAX_COLS, MAX_ROWS, TILE_SIZE, "white")
+        # Draws editor area
         pygame.draw.rect(screen, "moccasin", (WIDTH - 300, 0, 300, HEIGHT))
         pygame.draw.rect(screen, "moccasin", (0, HEIGHT - 100, WIDTH, 100))
+        
+        # Access btns, go through all_btns list and add each btn the editor side pane
+        for i in all_btns: 
+            i.draw(screen)
+            print(all_btns)
+        
         dirt.draw(screen)
         pygame.display.update()
         
