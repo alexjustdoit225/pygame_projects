@@ -33,7 +33,14 @@ scroll = 0
 scroll_speed = 1
 
 # Btn's
+btn_imgs = editor.load_images()  
+all_btns = []
+btn_row = 0
+btn_col = 0
 
+    
+     
+dirt = Buttons(400, 400, btn_imgs[0])
 
 
 # Draw background

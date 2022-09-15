@@ -111,8 +111,18 @@ class StateManager:
         if settings.scroll_right == True and settings.scroll < (MAX_COLS * TILE_SIZE) - WIDTH: 
             settings.scroll += 5 * settings.scroll_speed
         
-        # add Btn conditions, if clicked then what    
-                
+        # add Btn conditions, if clicked then what
+        for i in range(len(settings.btn_imgs)):
+            create_btn = Buttons((WIDTH - 300) + (75 * settings.btn_col) + 50, (75 * settings.btn_row) + 50, settings.btn_imgs[i])
+            all_btns.append(create_btn)
+            settings.btn_col += 1
+            if settings.btn_col == len(settings.btn_imgs): 
+                settings.btn_row += 1
+                settings.btn_col = 0
+        
+        if dirt.clicked: 
+            print("click")
+          
                 
                 
         # Displays background
@@ -120,6 +130,9 @@ class StateManager:
         draw_bg(settings.scroll)
         pygame.draw.line(screen, "green", (0,0), (600, 600)) #temp code
         editor.draw_grid(MAX_COLS, MAX_ROWS, TILE_SIZE, "white")
+        pygame.draw.rect(screen, "moccasin", (WIDTH - 300, 0, 300, HEIGHT))
+        pygame.draw.rect(screen, "moccasin", (0, HEIGHT - 100, WIDTH, 100))
+        dirt.draw(screen)
         pygame.display.update()
         
     def run_state_manager(self): 
