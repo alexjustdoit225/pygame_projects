@@ -1,5 +1,6 @@
 import pygame
 from level_editor import *
+from btn import Buttons
 
 level_map = [
     [1, 1, 1, 1, 1, 1],
@@ -31,6 +32,9 @@ scroll_right = False
 scroll = 0
 scroll_speed = 1
 
+# Btn's
+
+
 
 # Draw background
 def draw_bg(scroll_var): 
@@ -54,25 +58,6 @@ def draw_bg(scroll_var):
         screen.blit(bg_surf4, ((width * x) -scroll_var * 0.6,HEIGHT - (HEIGHT//3)))
         continue
         
-
-# def tile_setup(map): 
-#     """ Loops through map and returns a new map with tiles.
-#         :param map: list - level map
-#         :return new_map: list of objects - tiles 
-#     """
-#     new_map = []
-#     for row_index, rows in enumerate(map): 
-#         for col_index, cell in enumerate(rows): 
-#             print(f"(coordinate: {col_index}, {row_index})") #temp code delete later
-#             print(f"Row: {rows}\nCell: {cell}") 
-    
-#             if cell == 1: # Grass tile
-#                 # tile = Tile(), new_map.append(tile), tile.draw(img_surf), 
-#                 pass
-#             if cell == 2: # Dirt tile
-#                 pass
-#     return new_map
-            
 
             
 

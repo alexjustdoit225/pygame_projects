@@ -1,5 +1,6 @@
 import pygame, settings, tiles
 from settings import *
+from btn import Buttons
 
 class LevelEditor: 
     def __init__(self, screen_width, screen_height):
@@ -12,11 +13,14 @@ class LevelEditor:
         # add edited levels to a dict or list
         self.levels = ""
         
+        
+    # Loops through and loads images, scales image and appends image to list, returns a list of images
     def load_images(self): 
         for x in range(self.tile_types): 
             tile_img = pygame.image.load(f'projects\\platform_game\\graphics\\tiles\\{x}.png')  
             tile_img = pygame.transform.scale(tile_img, (settings.TILE_SIZE, settings.TILE_SIZE))
             self.tile_list.append(tile_img)
+        return (self.tile_list)
     
     # Draws editing grid
     def draw_grid(self, max_cols, max_rows, tile_sz, color):

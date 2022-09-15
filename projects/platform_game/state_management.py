@@ -2,6 +2,7 @@ import pygame
 from sys import exit
 from settings import *
 from level_editor import *
+from btn import Buttons
 
 class StateManager: 
     def __init__(self):
@@ -110,7 +111,9 @@ class StateManager:
         if settings.scroll_right == True and settings.scroll < (MAX_COLS * TILE_SIZE) - WIDTH: 
             settings.scroll += 5 * settings.scroll_speed
         
-               
+        # add Btn conditions, if clicked then what    
+                
+                
                 
         # Displays background
         screen.fill("Grey")
